@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'craft/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "craft"
+  spec.name          = "crafti"
   spec.version       = Craft.version
   spec.authors       = ["Robert Evans"]
   spec.email         = ["robert@codewranglers.org"]
