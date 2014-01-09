@@ -1,11 +1,11 @@
-require "craft/version"
+require "crafti/version"
 
 require 'fileutils'
 require 'pathname'
 require 'erb'
 require 'ostruct'
 
-module Craft
+module Crafti
   module KernelExtension
     def self.extended(mod)
       mod.module_eval do

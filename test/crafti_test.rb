@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 
-require_relative '../lib/craft'
+require_relative '../lib/crafti'
 
-module Craft
+module Crafti
   class RootTest < ::Minitest::Test
     def test_create_root_directory
-      ::Craft::Root.root("appname")
+      ::Crafti::Root.root("appname")
 
       assert ::File.exists?("appname")
 
@@ -15,7 +15,7 @@ module Craft
     end
 
     def test_creating_subdirectories
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         mkdir "config"
         mkdir "log"
         mkdir "test"
@@ -31,7 +31,7 @@ module Craft
     end
 
     def test_creating_multiple_subdirectories
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         mkdirs "config", "log", "test", mode: 0700
       end
 
@@ -45,7 +45,7 @@ module Craft
     end
 
     def test_touching_a_file
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         touch "Readme.mkd"
       end
 
@@ -57,7 +57,7 @@ module Craft
     end
 
     def test_touching_files
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         touch "Readme.mkd", "Rakefile", "Guardfile"
       end
 
@@ -71,7 +71,7 @@ module Craft
     end
 
     def test_copying_files
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         mkdir "test"
         copy Pathname.new(__dir__).join("test_helper.rb"), "test"
       end
@@ -85,7 +85,7 @@ module Craft
     end
 
     def test_chmod
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         mkdir "test"
         copy ::Pathname.new(__dir__).join("test_helper.rb"), "test"
         chmod 0777, "test/test_helper.rb"
@@ -104,7 +104,7 @@ module Craft
     end
 
     def test_chmod_r
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         mkdir "test"
         copy ::Pathname.new(__dir__).join("test_helper.rb"), "test"
         chmod_r 0777, "test"
@@ -123,7 +123,7 @@ module Craft
     end
 
     def test_run
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         run "mkdir foobar"
       end
 
@@ -138,7 +138,7 @@ module Craft
     # I'm keeping this here though, so we can test it when we want to.
     #
     # def test_sudo
-    #   ::Craft::Root.root("appname") do
+    #   ::Crafti::Root.root("appname") do
     #     sudo "echo 'RACK_ENV=development' > .env"
     #   end
 
@@ -151,7 +151,7 @@ module Craft
     # end
 
     def test_template
-      ::Craft::Root.root("appname") do
+      ::Crafti::Root.root("appname") do
         mkdir "test"
         template "test/test_helper.rb",
                   ::Pathname.new(__dir__).

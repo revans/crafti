@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'craft/version'
+require 'crafti/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "crafti"
-  spec.version       = Craft.version
+  spec.version       = Crafti.version
   spec.authors       = ["Robert Evans"]
   spec.email         = ["robert@codewranglers.org"]
   spec.summary       = %q{Generate directories and files with/out templates.}

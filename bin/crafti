@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'crafti'
+
+case ARGV.first
+when "template"
+  File.new("app_template.rb", "w+") do |f|
+    require 'crafti/project'
+  end
+else
+  puts "That command is not supported."
+end
