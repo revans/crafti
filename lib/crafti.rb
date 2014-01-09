@@ -10,7 +10,7 @@ module Crafti
     def self.extended(mod)
       mod.module_eval do
         def root(name, &block)
-          ::Craft::Root.root(name, &block)
+          ::Crafti::Root.root(name, &block)
         end
       end
     end
