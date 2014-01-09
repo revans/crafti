@@ -1,0 +1,14 @@
+require 'minitest/autorun'
+require 'minitest/pride'
+require 'ostruct'
+
+module TestHelper
+  def create_user
+    @user ||= begin
+      OpenStruct.new(name:    '<%= name %>',
+                     age:     '<%= age %>',
+                     gender:  '<%= gender %>')
+
+    end
+  end
+end
