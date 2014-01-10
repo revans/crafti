@@ -4,6 +4,8 @@ require 'rubygems'
 require 'crafti'
 
 case ARGV.first
+when "new"
+
 when "template"
   File.new("app_template.rb", "w+") do |f|
     require 'crafti/project'
