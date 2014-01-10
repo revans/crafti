@@ -2,12 +2,20 @@
 
 require 'rubygems'
 require 'crafti'
+# require_relative '../lib/crafti'
 
 options = Crafti::CLI.parse(ARGV)
 
 if options.event == "generate"
-  Crafti::FileReader.new(options.template_path).evaluate
+  Crafti::FileReader.generate(options.template_path)
 else
   puts "That command is not supported."
   exit
 end
+
+# require 'pathname'
+# path = Pathname.new(options.template_path).expand_path
+# puts "Values:\n"
+# puts "path: #{path.to_s}"
+# puts "\nContent:\n#{path.read}"
+

@@ -1,6 +1,9 @@
 require "crafti/version"
 require "crafti/cli"
 
+# require_relative "crafti/version"
+# require_relative "crafti/cli"
+
 require 'fileutils'
 require 'pathname'
 require 'erb'
@@ -84,13 +87,14 @@ module Crafti
   end
 
   class FileReader
-    def self.read(file)
+    def self.generate(file)
       app = new(file)
+      app.evaluate
     end
 
     attr_reader :content
     def initialize(file)
-      @content = ::Pathname.new(file).expand_path.read
+      @content = ::Pathname.new(file.to_s).expand_path.read
     end
 
     def evaluate
