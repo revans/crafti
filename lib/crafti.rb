@@ -1,4 +1,5 @@
 require "crafti/version"
+require "crafti/cli"
 
 require 'fileutils'
 require 'pathname'
@@ -79,6 +80,28 @@ module Crafti
       ::File.open(app_path.join(dest).to_s, 'w+') do |f|
         f.puts content
       end
+    end
+  end
+
+  class FileReader
+    def self.read(file)
+      app = new(file)
+    end
+
+    attr_reader :content
+    def initialize(file)
+      @content = ::Pathname.new(file).expand_path.read
+    end
+
+    def evaluate
+      klass = Class.new do
+        Kernel.extend(Crafti::KernelExtension)
+        def self.execute(string)
+          eval string
+        end
+      end
+
+      klass.execute(content)
     end
   end
 

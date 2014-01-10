@@ -3,13 +3,10 @@
 require 'rubygems'
 require 'crafti'
 
-case ARGV.first
-when "new"
-
-when "template"
-  File.new("app_template.rb", "w+") do |f|
-    require 'crafti/project'
-  end
+options = Crafti::CLI.parse(ARGV)
+if options.event == "generate"
+  Crafti::FileReader.new(options.template_path).evaluate
 else
   puts "That command is not supported."
+  exit
 end
