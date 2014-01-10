@@ -5,10 +5,6 @@ require 'crafti'
 
 options = Crafti::CLI.parse(ARGV)
 
-puts "Options:\n"
-puts options.inspect
-
-
 if options.event == "generate"
   Crafti::FileReader.new(options.template_path).evaluate
 else
