@@ -8,11 +8,16 @@ module Crafti
       options.event = args.reverse.pop
 
       opt_parser = OptionParser.new do |opts|
-        opts.banner = "Usage: crafti generate -m ~/path/to/template.rb"
+        opts.banner = <<-TEXT
+
+*** Crafti - Application Generation Simplified ***
+
+Usage: crafti generate -m ~/path/to/template.rb
+        TEXT
         opts.separator ""
 
-        opts.on("-m", "--template", "Path to the application template") do |template|
-          options.template_path = template
+        opts.on("-t", "--template PATH", "Path to the application template") do |path|
+          options.template_path = path
         end
 
         opts.on_tail("-h", "--help", "Help message") do
