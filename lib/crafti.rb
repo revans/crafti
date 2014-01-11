@@ -86,20 +86,28 @@ module Crafti
     end
   end
 
+  module AppName
+    def self.name(appname = nil)
+      @name ||= appname
+    end
+  end
+
   class FileReader
-    def self.generate(file)
-      app = new(file)
+    def self.generate(file, app_name = nil)
+      app = new(file, app_name)
       app.evaluate
     end
 
     attr_reader :content
-    def initialize(file)
-      @content = ::Pathname.new(file.to_s).expand_path.read
+    def initialize(file, app_name = nil)
+      ::Crafti::AppName.name(app_name)
+      @content  = ::Pathname.new(file.to_s).expand_path.read
     end
 
     def evaluate
       klass = Class.new do
         Kernel.extend(Crafti::KernelExtension)
+        Kernel.extend(Crafti::AppName)
         def self.execute(string)
           eval string
         end
@@ -113,7 +121,7 @@ module Crafti
     include FileUtilsExtension
 
     def self.root(appname, &block)
-      app = new(appname)
+      app = new((::Crafti::AppName.name || appname))
       app.create_root_directory
       app.evaluate(&block) if block_given?
     end
