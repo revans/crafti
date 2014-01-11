@@ -19,6 +19,5 @@ end
 # puts options.inspect
 # puts "Values:\n"
 # puts "path: #{path.to_s}"
-# puts "Name: #{options.name}"
 # puts "\nContent:\n#{path.read}"
 
