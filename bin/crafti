@@ -7,7 +7,7 @@ require 'crafti'
 options = Crafti::CLI.parse(ARGV)
 
 if options.event == "generate"
-  Crafti::FileReader.generate(options.template_path, options.name)
+  Crafti::FileReader.generate(options.template_path)
 else
   puts "That command is not supported."
   exit

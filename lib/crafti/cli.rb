@@ -17,11 +17,6 @@ module Crafti
         TEXT
         opts.separator ""
 
-        opts.on("-n", "--name NAME", "Name of the application you're creating. This overrides the name in the app template.") do |name|
-          name = nil if name.nil? || name == ''
-          options.name = name
-        end
-
         opts.on("-t", "--template PATH", "Path to the application template") do |path|
           options.template_path = path
         end
