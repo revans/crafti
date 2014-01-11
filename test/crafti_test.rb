@@ -73,7 +73,7 @@ module Crafti
     def test_copying_files
       ::Crafti::Root.root("appname") do
         mkdir "test"
-        copy Pathname.new(__dir__).join("test_helper.rb"), "test"
+        copy "test", Pathname.new(__dir__).join("test_helper.rb")
       end
 
       assert ::File.exists?("appname")
@@ -87,7 +87,7 @@ module Crafti
     def test_chmod
       ::Crafti::Root.root("appname") do
         mkdir "test"
-        copy ::Pathname.new(__dir__).join("test_helper.rb"), "test"
+        copy "test", ::Pathname.new(__dir__).join("test_helper.rb")
         chmod 0777, "test/test_helper.rb"
       end
 
@@ -106,7 +106,7 @@ module Crafti
     def test_chmod_r
       ::Crafti::Root.root("appname") do
         mkdir "test"
-        copy ::Pathname.new(__dir__).join("test_helper.rb"), "test"
+        copy "test", ::Pathname.new(__dir__).join("test_helper.rb")
         chmod_r 0777, "test"
       end
 
