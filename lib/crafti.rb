@@ -50,8 +50,9 @@ module Crafti
       end
     end
 
-    def copy(list, dir, options = {})
-      ::FileUtils.cp(list, app_path.join(dir).to_s, options)
+    def copy(dir, list, options = {})
+      list = [list].flatten.map { |f| app_path.join(f).to_s }
+      ::FileUtils.cp(list, dir, options)
     end
     alias_method :cp, :copy
 
