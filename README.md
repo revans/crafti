@@ -1,6 +1,6 @@
 # Craft - Project Generation Tool
 
-[![Build Status](https://travis-ci.org/revans/craft.png?branch=master)](https://travis-ci.org/revans/crafti)
+[![Build Status](https://travis-ci.org/revans/crafti.png?branch=master)](https://travis-ci.org/revans/crafti)
 
 ## About its Birth
 
