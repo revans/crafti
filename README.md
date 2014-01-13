@@ -1,5 +1,10 @@
 # Craft - Project Generation Tool
 
+[![Build Status](https://travis-ci.org/revans/craft.png)](https://travis-ci.org/revans/craft)
+
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/revans/craft)
+
+
 ## About its Birth
 
 I like modular applications. I'm tired of Rails bulk, so I prefer building libraries, using Rack, or using Sinatra in place of the kitchen sink that is Rails.
