@@ -65,14 +65,6 @@ module Crafti
       ::FileUtils.chmod_R(mode, file)
     end
 
-    def run(command)
-      system("cd #{app_path} && #{command}")
-    end
-
-    def sudo(command)
-      run "sudo #{command}"
-    end
-
     def template(dest, erb_template, values)
       temp = ::Pathname.new(erb_template)
 
@@ -131,6 +123,14 @@ module Crafti
 
     def create_root_directory
       ::FileUtils.mkdir_p(app_path)
+    end
+
+    def run(command)
+      system("cd #{app_path} && #{command}")
+    end
+
+    def sudo(command)
+      run "sudo #{command}"
     end
 
   end

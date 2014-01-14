@@ -77,3 +77,9 @@ root "appname" do
 end
 
 ````
+
+## Features coming....
+
+* command to read templates from the internet (e.g. github)
+* generate a starter template
+* allow the main template file be an erb file where command options can be passed into (e.g. the name passed to the root method)
