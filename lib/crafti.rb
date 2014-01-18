@@ -91,7 +91,7 @@ module Crafti
 
     def evaluate
       klass = Class.new do
-        Kernel.extend(Crafti::KernelExtension)
+        ::Kernel.extend(Crafti::KernelExtension)
         def self.execute(string)
           eval string
         end
@@ -101,8 +101,43 @@ module Crafti
     end
   end
 
+  module RunCommands
+    def run(command)
+      system("cd #{app_path} && #{command}")
+    end
+
+    def sudo(command)
+      run "sudo #{command}"
+    end
+
+    def bower(*packages)
+      packages.each do |package|
+        run "bower install #{package}"
+      end
+    end
+  end
+
+  module Git
+    include RunCommands
+
+    def git(command)
+      run "git #{command}"
+    end
+
+    class Init
+    end
+
+    class Add
+    end
+
+    class Commit
+    end
+  end
+
   class Root
     include FileUtilsExtension
+    include RunCommands
+    include Git
 
     def self.root(appname, &block)
       app = new(appname)
@@ -123,14 +158,6 @@ module Crafti
 
     def create_root_directory
       ::FileUtils.mkdir_p(app_path)
-    end
-
-    def run(command)
-      system("cd #{app_path} && #{command}")
-    end
-
-    def sudo(command)
-      run "sudo #{command}"
     end
 
   end

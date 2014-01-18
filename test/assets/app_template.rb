@@ -5,4 +5,6 @@ root "appname" do
   touch "Rakefile"
   touch "Guardfile"
   touch "test/test_helper.rb"
+
+  git "init ."
 end
