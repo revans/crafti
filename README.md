@@ -81,7 +81,7 @@ root "appname" do
           environment:    'ENV["RACK_ENV"]' }
 
   # Yes, bower support
-  bower "angularjs", "bootstrap", "sugar"
+  bower "angular", "bootstrap", "sugar"
 
   # Bundler Support (:install only)
   bundle :install, with: 'binstubs'
