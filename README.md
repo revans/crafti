@@ -16,9 +16,14 @@ So, Crafti (don't ask me about the name...) was born.
 
 I really wanted something that was bash like, but with Ruby block syntax. Something that you could read and get a basic understanding of what is being created. So, the current structure was what I came up with initially and then coded for. I like it, I don't care if you like it, but I'm happy if you want to use it.
 
-## Examples
+## Bower Support
+
+Crafti also provides [Bower](http://www.bower.io) support to manage the front-end technologies, much like Bundler/Gemfile manages the backend technologies.
+
+## Template Examples
 
 There is a Crafti Repository that has some working templates here: [https://github.com/revans/crafti-templates](https://github.com/revans/crafti-templates)
+
 
 ### Sinatra Style Structure
 
@@ -75,7 +80,7 @@ root "appname" do
         { app_classname:  'FannyPackApplication',
           environment:    'ENV["RACK_ENV"]' }
 
-  # Yes, bower support - [http://www.bower.io](http://www.bower.io)
+  # Yes, bower support
   bower "angularjs", "bootstrap", "sugar"
 
   # Bundler Support (:install only)
