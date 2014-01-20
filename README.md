@@ -73,7 +73,17 @@ root "appname" do
         { app_classname:  'FannyPackApplication',
           environment:    'ENV["RACK_ENV"]' }
 
-  run "bundle install --binstubs" # runs a terminal command
+  # Yes, bower support
+  bower "angularjs", "bootstrap", "sugar"
+
+  # Bundler Support (:install only)
+  bundle :install, with: 'binstubs'
+
+  git do
+    init
+    add :all
+    commit 'Created the project'
+  end
 end
 
 ````

@@ -6,5 +6,9 @@ root "appname" do
   touch "Guardfile"
   touch "test/test_helper.rb"
 
-  git "init ."
+  git do
+    init
+    add :all
+    commit 'Created the project'
+  end
 end

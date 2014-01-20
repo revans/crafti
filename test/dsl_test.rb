@@ -11,6 +11,7 @@ class DSLTest < Minitest::Test
     file.evaluate
 
     assert File.exists?("appname/.git")
+    assert (system 'cd appname && git status')
 
     assert File.exists?("appname")
     cleanup("appname")

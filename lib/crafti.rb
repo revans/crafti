@@ -115,29 +115,60 @@ module Crafti
         run "bower install #{package}"
       end
     end
+
+    def bundle(command, options = {})
+      opts = [options[:with]].flatten.map { |o| "--#{o}" }.join(' ')
+      opts ||= ''
+
+      run "bundle #{command.to_s} #{opts}"
+    end
+
+    #
+    # git do
+    #   init
+    #   add :all
+    #   commit 'First Commit'
+    # end
+    #
+    def git(&block)
+      Git.new(app_path, &block)
+    end
   end
 
-  module Git
-    include RunCommands
+  class Git
+    attr_reader :app_path
+
+    def initialize(app_path, &block)
+      @app_path = app_path
+      instance_eval(&block) if block_given?
+    end
+
+    def init
+      git "init ."
+    end
+
+    def add(*args)
+      cmd = case args.first
+      when :all then "."
+      else
+        files = args.join(' ')
+      end
+
+      git "add #{cmd}"
+    end
+
+    def commit(message)
+      git "commit -am '#{message}'"
+    end
 
     def git(command)
-      run "git #{command}"
-    end
-
-    class Init
-    end
-
-    class Add
-    end
-
-    class Commit
+      results = system "cd #{app_path} && git #{command}"
     end
   end
 
   class Root
     include FileUtilsExtension
     include RunCommands
-    include Git
 
     def self.root(appname, &block)
       app = new(appname)
