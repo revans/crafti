@@ -18,7 +18,7 @@ I really wanted something that was bash like, but with Ruby block syntax. Someth
 
 ## Bower Support
 
-Crafti also provides [Bower](http://www.bower.io) support to manage the front-end technologies, much like Bundler/Gemfile manages the backend technologies.
+Crafti also provides [Bower](http://www.bower.io) support to manage the front-end technologies, much like Bundler/Gemfile manage the backend technologies.
 
 ## Template Examples
 
