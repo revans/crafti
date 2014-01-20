@@ -18,6 +18,8 @@ I really wanted something that was bash like, but with Ruby block syntax. Someth
 
 ## Examples
 
+There is a Crafti Repository that has some working templates here: [https://github.com/revans/crafti-templates](https://github.com/revans/crafti-templates)
+
 ### Sinatra Style Structure
 
 ````ruby
@@ -73,15 +75,16 @@ root "appname" do
         { app_classname:  'FannyPackApplication',
           environment:    'ENV["RACK_ENV"]' }
 
-  # Yes, bower support
+  # Yes, bower support - [http://www.bower.io](http://www.bower.io)
   bower "angularjs", "bootstrap", "sugar"
 
   # Bundler Support (:install only)
   bundle :install, with: 'binstubs'
 
+  # Git Support
   git do
     init
-    add :all
+    add :all # can replace ':all' with '.', or 'Readme.mkd', 'Procfile', 'Guardfile'
     commit 'Created the project'
   end
 end
